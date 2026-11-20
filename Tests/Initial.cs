@@ -1,0 +1,1 @@
+﻿namespace RetroTests { static class Initial { public static void Run(){ UI.Enabled("btnExec",true);UI.Enabled("btnStop",false);UI.Text("edtPort","COM1");UI.Text("cmbBaud","38400");UI.Toggle("chkAuto",true);UI.Toggle("chkLog",false);UI.Toggle("chkWarn",true);UI.Toggle("chkFull",false); } } }

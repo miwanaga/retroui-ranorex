@@ -1,0 +1,5 @@
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<PropertyGroup><OutputType>Exe</OutputType><TargetFrameworkVersion>v4.8</TargetFrameworkVersion><PlatformTarget>x86</PlatformTarget><OutputPath>bin\Debug\</OutputPath><RanorexBin Condition="'$(RanorexBin)'==''">C:\Program Files (x86)\Ranorex\Studio\Bin</RanorexBin></PropertyGroup>
+<ItemGroup><Reference Include="System"/><Reference Include="System.Core"/><Reference Include="System.Drawing"/><Reference Include="Ranorex.Core"><HintPath>$(RanorexBin)\Ranorex.Core.dll</HintPath></Reference><Reference Include="Ranorex.Common"><HintPath>$(RanorexBin)\Ranorex.Common.dll</HintPath></Reference><Reference Include="Ranorex.Plugin.Win32"><HintPath>$(RanorexBin)\Ranorex.Plugin.Win32.dll</HintPath></Reference><Compile Include="Program.cs"/><Compile Include="Common\*.cs"/><Compile Include="Tests\*.cs"/></ItemGroup>
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>

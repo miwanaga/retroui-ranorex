@@ -3,3 +3,6 @@ obj/
 *.rxlog
 *.rxlog.data/
 .vs/
+
+Screenshots/*
+!Screenshots/.gitkeep

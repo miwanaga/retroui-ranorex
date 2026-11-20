@@ -5,3 +5,5 @@
 .gitignore text eol=crlf
 .gitattributes text eol=crlf
 *.rxsnp binary
+
+*.rxtst text eol=crlf

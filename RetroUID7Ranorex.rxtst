@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testsuitedoc>
+  <testsuiteentryhierarchy>
+    <flatlistofchildren>
+      <testsuite ExportColumnList="None" ReportTime="RelativeToTestSuiteStartTime" SelectedActions="All" TracingScreenshotMode="Foreground" TracingScreenshotQuality="40" VideoBitrate="2000" VideoFps="15" VideoRecordingMode="Off" VideoSource="Auto" createindividualreportpdfchecked="False" createsinglereportpdfchecked="True" enableCSVReport="False" enabletracingscreenshots="True" exportAllColummns="True" filterblocked="True" filterfailed="True" filtersuccess="True" id="efa68ded-2742-4d85-8d60-0a9655ab2e50" includeimageschecked="False" includerecordingschecked="False" junitreport="False" junitreportaddtestid="False" junitreportshowerrafterstd="True" name="RetroUID7Ranorex" overwritefilechecked="False" reportcompress="False" reportdescription="" reportdirectoryname="Reports" reportenabled="True" reportfilename="%S_%Y%M%D_%T.rxlog" reporttemplatefolder="" reportwriteinterval="30000ms" showtestdata="True" showtestmodulefullpath="False" singlereportpdfdirectory="SingleReportPDF"></testsuite>
+      <testcase id="21ecc184-e65c-4114-9e05-7097894bbcca" name="Initial" />
+      <testmodule id="9de4443e-077b-4422-9fff-28799d6c40a0" name="InitialModule" ref="0e163353-8afb-42fb-9ada-5064b43fc1f0" type="UserCode" />
+      <testcase id="acd0e705-e760-4447-abd9-43bfea5c15ea" name="Methods" />
+      <testmodule id="7debc688-ed2c-4ae0-9cd4-db8ade2c991f" name="MethodsModule" ref="1ceff938-9bc2-47b2-a1bd-3659efbe61e9" type="UserCode" />
+      <testcase id="83506ec6-d734-4e73-a7db-a32121e5302e" name="Communication" />
+      <testmodule id="c1355a98-b223-489f-bf9c-0d935942653b" name="CommunicationModule" ref="747e16b2-1401-4299-85ff-3e4ba468d09f" type="UserCode" />
+      <testcase id="ee20d3af-7b4b-4425-b0bd-df3147305ca3" name="Options" />
+      <testmodule id="70c8a3d9-1799-452b-a955-4162fe553585" name="OptionsModule" ref="3928e2d4-0fc5-4a86-a71a-c32628227347" type="UserCode" />
+      <testcase id="424f346a-2458-4cd5-aa89-cd94ca77dbf0" name="Logging" />
+      <testmodule id="445e40d9-e002-4a39-8b13-a61d34e221de" name="LoggingModule" ref="308bb84b-c70b-4016-a6ac-c94288831eb8" type="UserCode" />
+      <testcase id="95c78c70-31cb-4e7b-a728-9ed18b76a2e0" name="Dialogs" />
+      <testmodule id="9624af62-091e-4c51-a31e-17d68d013da7" name="DialogsModule" ref="eacb9ddf-4879-4292-8e77-e282875b6fc0" type="UserCode" />
+    </flatlistofchildren>
+    <childhierarchy>
+      <testsuite id="efa68ded-2742-4d85-8d60-0a9655ab2e50" name="RetroUID7Ranorex">
+        <testcase id="21ecc184-e65c-4114-9e05-7097894bbcca" name="Initial">
+          <testmodule id="9de4443e-077b-4422-9fff-28799d6c40a0" name="InitialModule" />
+        </testcase>
+        <testcase id="acd0e705-e760-4447-abd9-43bfea5c15ea" name="Methods">
+          <testmodule id="7debc688-ed2c-4ae0-9cd4-db8ade2c991f" name="MethodsModule" />
+        </testcase>
+        <testcase id="83506ec6-d734-4e73-a7db-a32121e5302e" name="Communication">
+          <testmodule id="c1355a98-b223-489f-bf9c-0d935942653b" name="CommunicationModule" />
+        </testcase>
+        <testcase id="ee20d3af-7b4b-4425-b0bd-df3147305ca3" name="Options">
+          <testmodule id="70c8a3d9-1799-452b-a955-4162fe553585" name="OptionsModule" />
+        </testcase>
+        <testcase id="424f346a-2458-4cd5-aa89-cd94ca77dbf0" name="Logging">
+          <testmodule id="445e40d9-e002-4a39-8b13-a61d34e221de" name="LoggingModule" />
+        </testcase>
+        <testcase id="95c78c70-31cb-4e7b-a728-9ed18b76a2e0" name="Dialogs">
+          <testmodule id="9624af62-091e-4c51-a31e-17d68d013da7" name="DialogsModule" />
+        </testcase>
+      </testsuite>
+    </childhierarchy>
+  </testsuiteentryhierarchy>
+  <datasources></datasources>
+  <testconfigurations default="AllTests">
+    <testconfiguration name="AllTests">
+      <testcontainer id="21ecc184-e65c-4114-9e05-7097894bbcca" />
+      <testcontainer id="acd0e705-e760-4447-abd9-43bfea5c15ea" />
+      <testcontainer id="83506ec6-d734-4e73-a7db-a32121e5302e" />
+      <testcontainer id="ee20d3af-7b4b-4425-b0bd-df3147305ca3" />
+      <testcontainer id="424f346a-2458-4cd5-aa89-cd94ca77dbf0" />
+      <testcontainer id="95c78c70-31cb-4e7b-a728-9ed18b76a2e0" />
+    </testconfiguration>
+  </testconfigurations>
+  <references></references>
+</testsuitedoc>

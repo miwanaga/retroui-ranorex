@@ -1,22 +1,24 @@
-﻿using RetroTests;
-class Program
+﻿using System;
+using Ranorex;
+using Ranorex.Core.Testing;
+
+namespace RetroTests
 {
-    [System.STAThread] static int Main()
+    internal static class Program
     {
-        try
+        [STAThread]
+        public static int Main(string[] args)
         {
-            UI.Run("Initial",Initial.Run);
-            UI.Run("Methods",Methods.Run);
-            UI.Run("Communication",Communication.Run);
-            UI.Run("Options",Options.Run);
-            UI.Run("Logging",Logging.Run);
-            UI.Run("Dialogs",Dialogs.Run);
-            return 0;
-        }
-        catch(System.Exception e)
-        {
-            System.Console.Error.WriteLine(e);
-            return 1;
+            Keyboard.AbortKey = System.Windows.Forms.Keys.Pause;
+            try
+            {
+                return TestSuiteRunner.Run(typeof(Program), Environment.CommandLine);
+            }
+            catch (Exception exception)
+            {
+                Report.Error(exception.ToString());
+                return -1;
+            }
         }
     }
 }

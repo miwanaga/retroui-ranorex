@@ -13,6 +13,35 @@ namespace RetroTests
         private readonly object gate = new object();
         private StreamWriter file;
 
+        private static ConsoleLog studioLog;
+
+        public static void EnsureStarted()
+        {
+            // Studio can execute modules without calling our Program.Main.
+            if (Program.Log != null)
+            {
+                Program.Log.BindReport();
+                return;
+            }
+            if (studioLog == null)
+            {
+                studioLog = new ConsoleLog();
+                Ranorex.Core.Testing.TestSuite.TestSuiteCompleted += OnSuiteCompleted;
+            }
+            studioLog.BindReport();
+        }
+
+        private static void OnSuiteCompleted(object sender, EventArgs args)
+        {
+            Ranorex.Core.Testing.TestSuite.TestSuiteCompleted -= OnSuiteCompleted;
+            if (studioLog != null)
+            {
+                studioLog.BindReport();
+                studioLog.Dispose();
+                studioLog = null;
+            }
+        }
+
         public ConsoleLog()
         {
             Console.SetOut(new MirrorWriter(this, originalOut));

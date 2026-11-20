@@ -75,7 +75,7 @@ namespace RetroTests
         }
         public static void Run(string name,Action test)
         {
-            if (Program.Log != null) Program.Log.BindReport();
+            ConsoleLog.EnsureStarted();
             Process p=null;
             Screenshots.BeginCase(name);
             try

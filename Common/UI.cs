@@ -12,9 +12,10 @@ public static class UI {
  public static void Enabled(string name,bool expected) { Check(bool.Parse(Attr(name,"enabled"))==expected,name+" enabled="+expected); }
  public static void Text(string name,string value) { Check(Attr(name,"windowtext").Contains(value),name+" contains "+value); }
  public static void Toggle(string name,bool value) { var c=Host.Local.FindSingle<CheckBox>(Root+"//*[@controlname='"+name+"']",10000); if(c.Checked!=value)c.Click(); Check(c.Checked==value,name+" checked="+value); }
- public static void Wait(Func<bool> condition,int seconds,string message) { var until=DateTime.UtcNow.AddSeconds(seconds); while(DateTime.UtcNow<until){if(condition())return;Thread.Sleep(200);} throw new Exception(message); }
+ public static void Wait(Func<bool> condition,int seconds,string message) { var until=System.DateTime.UtcNow.AddSeconds(seconds); while(System.DateTime.UtcNow<until){if(condition())return;Thread.Sleep(200);} throw new Exception(message); }
  public static void Confirm(bool yes) { Host.Local.FindSingle<Button>("/form[@processname='RetroUID7' and @class='TMessageForm']//button[@text~'"+(yes?"Yes|はい":"No|いいえ")+"']",10000).Click(); }
  public static void Start(){Toggle("chkAuto",false);Click("btnExec");Enabled("btnExec",false);Enabled("btnStop",true);Enabled("grpHoushiki",false);Enabled("grpPort",false);}
  public static void Stop(){Click("btnStop");Confirm(true);Enabled("btnExec",true);Enabled("btnStop",false);Enabled("grpHoushiki",true);Enabled("grpPort",true);}
  public static void Run(string name,Action test) { Process p=null;try { p=Process.Start(new ProcessStartInfo(@"C:\work\RetroUI\RetroUID7.exe"){WorkingDirectory=@"C:\work\RetroUI"}); Find("btnExec");test(); Console.WriteLine("PASS CASE "+name); } finally {if(p!=null&&!p.HasExited){p.Kill();p.WaitForExit(5000); } if(p!=null)p.Dispose();} }
 }}
+

@@ -4,13 +4,13 @@
     <ProjectGuid>{4988D438-A667-4885-859D-62423C591E40}</ProjectGuid>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Platform Condition="'$(Platform)' == ''">x86</Platform>
-    <RanorexTargetsPath>$(RanorexBin)\Ranorex.MSBuild.Targets</RanorexTargetsPath>
     <RootNamespace>RetroTests</RootNamespace>
     <AssemblyName>RetroUID7Ranorex</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\Debug\</OutputPath>
     <RanorexBin Condition="'$(RanorexBin)'==''">C:\Program Files (x86)\Ranorex\Studio\Bin</RanorexBin>
+    <RanorexTargetsPath>$(RanorexBin)\Ranorex.MSBuild.Targets</RanorexTargetsPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

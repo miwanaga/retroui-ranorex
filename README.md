@@ -1,39 +1,34 @@
-﻿# RetroUID7 Ranorex UI tests
+﻿# RetroUID7 Ranorex Test Suite
 
-対象: C:\work\RetroUI\RetroUID7.exe。各ケースで新規プロセスを起動し、finallyでそのプロセスのみ終了します。既存のRetroUID7を終了してから実行してください。
+このtestsuiteブランチはRanorex Test Suite形式です。masterのコンソール形式から変更しています。
 
-## ビルドと実行
-Ranorex 12.8.2（スナップショットの版）、.NET Framework 4.8 Developer Pack、MSBuildが必要です。
+## 開く・ビルド・実行
 
-    msbuild RetroUID7Ranorex.csproj /p:RanorexBin="実際のRanorex StudioのBinフォルダー"
+Ranorex Studio 12.8.2でRetroUID7Ranorex.csprojを開き、RetroUID7Ranorex.rxtstを開いてください。既存のRanorex生成プロジェクト（C:\work\delphi-retro-app-test\RetroUITest）のスイート構造とビルド設定を参照しています。12.8.2の新規作成ウィザードを直接実行した成果物ではありません。
+
+スイートのAllTests構成にInitial、Methods、Communication、Options、Logging、Dialogsの6ケースがあります。Studioで対象ケースを選択して実行できます。各ケースはModules以下のITestModuleを通して既存テストを呼び、共通のUI.Runで新規プロセスの起動とfinallyでの終了処理を行います。
+
+Program.MainはTestSuiteRunner.Runを呼びます。Ranorex.MSBuild.Targetsによるブートストラップ用エントリーポイント生成を有効化しています。RootNamespaceはRetroTestsです。
+
+対象アプリはC:\work\RetroUI\RetroUID7.exeです。既存の同名アプリを終了し、対話デスクトップで実行してください。
+
+    msbuild RetroUID7Ranorex.csproj /p:Configuration=Debug
     bin\Debug\RetroUID7Ranorex.exe
 
-終了コード0は全ケース成功、1は失敗です。標準出力に検証結果を記録します。これはRanorex APIを用いるコンソールプロジェクトであり、Studioの.rxtstスイートはまだありません。
-
-## 機能と実装状況
-- Initial: 初期表示、実行/中止状態、ポート、速度、オプション
-- Methods: Serial/Modem/LAN切替、ポート、速度/パリティ有効状態
-- Communication: 各方式で開始、中止キャンセル、中止確定、再開始、経過時間
-- Options: ログ表示オプション、警告音設定、最大化/復元
-- Dialogs: ヘルプ、待機中/通信中の終了キャンセル、通信中終了確定
-- Common/UI.cs: セレクター、待機、検証、起動/後始末、開始/中止、確認応答
-
-## 制約と残作業
-この成果物は未ビルド・未実行の初期版です。完成した全機能テストとして扱わないでください。
-D7版のRetroUIUnit.dfmはKaiで確認しましたが、RetroUIUnit.pasは全体/行単位とも文字コード変換エラーで取得できませんでした。Win10版の処理コードは参照できましたが、D7の期待値の確証にはなりません。
-Ranorex/MSBuildの利用可能なインストールを確認できていません。
-D7スナップショットには「Delphi version not supported」の制限が記録されています。controlname属性は取得されていますが、ライブ検索とダイアログのボタン文字列は実機検証が必要です。
-未実装: 全速度選択、自由入力、方式固有の送受信ログと6行循環、進捗値、乱数による回線切断/再接続、途中の再接続設定変更、ログファイル内容/保存停止/外部ビューア起動/書込失敗、音声出力、ヘルプ本文、待機中終了確定、キーボード操作、全画面復元サイズ。ログテストを拡張する場合は既存ログの保護と復元が必要です。
-Initial内のToggleは操作後状態の検証で、オプション初期値の厳密な検証ではありません。
-スナップショットはC:\work\RetroUIRanorex\D7からコピーしました。元ファイルは変更していません。
-
-## 2026-11-20 ソース再解析
-D7版RetroUIUnit.pasを直接CP932で参照できました。上記の「取得できない」は解消しました。
-D7固有の仕様はログがretroui_d7.log（CP932）、表示ログ最大4行、タイマー800ms、復元ClientWidth=400/ClientHeight=406です。通信方式の設定値は既存テストと一致します。
-Initialを操作なしの初期チェック検証へ修正しました。Loggingテストを追加し、初期履歴、開始、中止、受信、保存停止、再有効化での履歴保存を検証します。既存ログはバイト単位で退避・復元します。
-指定のranorex12-build-serverはこのセッションの公開ツール一覧に存在しません。コンパイルは未実行であり、ビルド成功とは扱いません。Studioスイート、再接続など上記の残作業は引き続き未完了です。
+Ranorexの場所が異なる場合は/p:RanorexBin="実際のStudioのBinフォルダー"を指定します。ビルドにはRanorex、MSBuild、.NET Framework 4.8 Developer Packが必要です。スイート定義は出力フォルダーにもコピーされます。
 
 ## スクリーンショット
-実行時、プロジェクトルートのScreenshots/<実行日時_PID>/<テスト名>/に連番付きPNGを保存します。実行ファイルの場所から親フォルダーをたどってcsprojを探すため、カレントディレクトリには依存しません。プロジェクト配下のbinから実行してください。
-初期画面、ボタンクリック後（方式変更、開始・中止、ヘルプ、終了確認）、各オプション設定後（最大化・復元を含む）、確認応答直前、ケース完了、失敗時を撮影します。保存先を標準出力に表示します。撮影は共通モジュールCommon/Screenshots.csに集約しています。
-モーダルダイアログや画面外へのはみ出しを確認できるよう、全モニターのデスクトップ全体を撮影します。対象アプリを前面に置き、対話デスクトップで実行してください。他ウィンドウが重なるとそのまま写ります。PNGの目視確認用であり、レイアウトの自動合否判定は行いません。通常の撮影失敗はケースを失敗にし、失敗時の追加撮影エラーは元の例外を維持して記録します。生成PNGはGit対象外です。
+
+プロジェクトルートのScreenshots/<実行日時_PID>/<テスト名>/に連番付きPNGを保存します。csprojのある親フォルダーを実行ファイルの場所から探すため、プロジェクト配下のbinから実行してください。共有フォルダーへコピーした実行ファイルだけではこのルート検索は成立しません。
+初期画面、クリック後、オプション変更後、確認応答前、完了、失敗時に全モニターを撮影します。対象アプリを前面に置いてください。目視確認用でありレイアウトを自動判定しません。PNGはGit対象外です。
+
+## 検証範囲と残作業
+
+Ranorex12ビルドサーバーでRanorex固有のエントリーポイント生成を含むビルド成功を確認しました。Studioの画面でのロード、モジュール認識、選択実行、実際のUIテスト実行は未確認です。
+
+D7ソースはCP932で解析済みです。ログ保存先はretroui_d7.log、表示は最大4行、タイマーは800msです。Loggingは既存ログをバイト単位で退避・復元します。
+スナップショットにはDelphi version not supportedの制限が記録されています。controlnameによるライブ検索やダイアログ文字列は実機検証が必要です。
+未実装の主な検証は全速度選択、自由入力、方式固有ログと4行循環、進捗範囲、自動再接続、途中設定変更、ログ外部ビューアと書込失敗、音声出力、ヘルプ本文、待機中終了確定、キーボード操作、復元クライアントサイズです。テストスイート化はこれらの網羅性を追加するものではありません。
+
+ビルド成果物のコピー先:
+\\laptop-an963npk\data\work\services\Ranorex\build\RetrroUID7

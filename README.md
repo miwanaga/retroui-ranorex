@@ -32,3 +32,6 @@ D7ソースはCP932で解析済みです。ログ保存先はretroui_d7.log、�
 
 ビルド成果物のコピー先:
 \\laptop-an963npk\data\work\services\Ranorex\build\RetrroUID7
+
+## コンソールログ
+標準出力と標準エラーを、Ranorexが決定したReportViewFilePathと同じフォルダー・同じベース名の.txtへ保存します。例: Example.rxlogとExample.txt。UTF-8 BOM付き、追記ごとにフラッシュします。レポート初期化前の出力もバッファーして保存します。レポートが初期化されない場合は保存先を決定できず、その旨を標準エラーへ通知します。ネイティブプロセスや子プロセスの出力は対象外です。実行時の保存動作は未検証です。

@@ -6,3 +6,4 @@ obj/
 
 Screenshots/*
 !Screenshots/.gitkeep
+*.txt

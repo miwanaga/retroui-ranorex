@@ -75,6 +75,7 @@ namespace RetroTests
         }
         public static void Run(string name,Action test)
         {
+            if (Program.Log != null) Program.Log.BindReport();
             Process p=null;
             Screenshots.BeginCase(name);
             try
@@ -90,8 +91,9 @@ namespace RetroTests
                 Screenshots.Capture("Completed");
                 Console.WriteLine("PASS CASE "+name);
             }
-            catch
+            catch (Exception exception)
             {
+                Console.Error.WriteLine(exception);
                 try
                 {
                     Screenshots.Capture("Failed");

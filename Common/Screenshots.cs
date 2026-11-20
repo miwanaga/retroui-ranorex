@@ -15,19 +15,19 @@ namespace RetroTests
             caseName = name;
             sequence = 0;
         }
-        private static string ProjectRoot()
+        private static string ReportDirectory()
         {
-            var directory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            while (directory != null)
+            var environment = Ranorex.Core.Reporting.TestReport.ReportEnvironment;
+            if (environment != null && !string.IsNullOrEmpty(environment.ReportViewFilePath))
             {
-                if (File.Exists(Path.Combine(directory.FullName, "RetroUID7Ranorex.csproj"))) return directory.FullName;
-                directory = directory.Parent;
+                return Path.GetDirectoryName(Path.GetFullPath(environment.ReportViewFilePath));
             }
-            throw new DirectoryNotFoundException("Cannot locate RetroUID7Ranorex.csproj above executable; run from the project bin folder.");
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports");
         }
+
         public static void Capture(string label)
         {
-            string folder = Path.Combine(ProjectRoot(), "Screenshots", Session, caseName);
+            string folder = Path.Combine(ReportDirectory(), "Screenshots", Session, caseName);
             Directory.CreateDirectory(folder);
             string safe = label;
             foreach (char c in Path.GetInvalidFileNameChars()) safe = safe.Replace(c, '_');

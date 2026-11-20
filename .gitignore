@@ -7,3 +7,5 @@ obj/
 Screenshots/*
 !Screenshots/.gitkeep
 *.txt
+
+Reports/

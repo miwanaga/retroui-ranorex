@@ -1,2 +1,18 @@
-﻿namespace RetroTests { static class Options { public static void Run(){UI.Toggle("chkLog",true);UI.Check(bool.Parse(UI.Attr("btnOpenLog","visible")),"open log visible");UI.Toggle("chkLog",false);UI.Toggle("chkWarn",false);UI.Toggle("chkWarn",true);UI.Toggle("chkFull",true);UI.Check(Ranorex.Host.Local.FindSingle<Ranorex.Form>(UI.Root,10000).Element.GetAttributeValueText("state")=="Maximized","maximized");UI.Toggle("chkFull",false);UI.Check(Ranorex.Host.Local.FindSingle<Ranorex.Form>(UI.Root,10000).Element.GetAttributeValueText("state")=="Normal","normal");} } }
-
+﻿namespace RetroTests
+{
+    static class Options
+    {
+        public static void Run()
+        {
+            UI.Toggle("chkLog",true);
+            UI.Check(bool.Parse(UI.Attr("btnOpenLog","visible")),"open log visible");
+            UI.Toggle("chkLog",false);
+            UI.Toggle("chkWarn",false);
+            UI.Toggle("chkWarn",true);
+            UI.Toggle("chkFull",true);
+            UI.Check(Ranorex.Host.Local.FindSingle<Ranorex.Form>(UI.Root,10000).Element.GetAttributeValueText("state")=="Maximized","maximized");
+            UI.Toggle("chkFull",false);
+            UI.Check(Ranorex.Host.Local.FindSingle<Ranorex.Form>(UI.Root,10000).Element.GetAttributeValueText("state")=="Normal","normal");
+        }
+    }
+}

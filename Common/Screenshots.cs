@@ -7,7 +7,8 @@ namespace RetroTests
 {
     public static class Screenshots
     {
-        private static readonly string Session = System.DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + "_" + System.Diagnostics.Process.GetCurrentProcess().Id;
+        private static readonly string Session = System.DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + "_" +
+                                                 System.Diagnostics.Process.GetCurrentProcess().Id;
         private static string caseName = "Startup";
         private static int sequence;
         public static void BeginCase(string name)
@@ -30,7 +31,8 @@ namespace RetroTests
             string folder = Path.Combine(ReportDirectory(), "Screenshots", Session, caseName);
             Directory.CreateDirectory(folder);
             string safe = label;
-            foreach (char c in Path.GetInvalidFileNameChars()) safe = safe.Replace(c, '_');
+            foreach (char c in Path.GetInvalidFileNameChars())
+                safe = safe.Replace(c, '_');
             string path = Path.Combine(folder, (++sequence).ToString("D3") + "_" + safe + ".png");
             // Capture the complete virtual desktop so modal dialogs and clipped edges remain visible.
             Rectangle bounds = SystemInformation.VirtualScreen;

@@ -1,6 +1,6 @@
-﻿# RetroUID7 Ranorex Test Suite
+﻿# RetroUID13Modern Ranorex Test Suite
 
-このtestsuiteブランチはRanorex Test Suite形式です。masterのコンソール形式から変更しています。
+このブランチは RetroUID13Modern 向けの Ranorex Test Suite です。
 
 ## 開く・ビルド・実行
 
@@ -10,7 +10,7 @@ Ranorex Studio 12.8.2でRetroUID7Ranorex.csprojを開き、RetroUID7Ranorex.rxts
 
 Program.MainはTestSuiteRunner.Runを呼びます。Ranorex.MSBuild.Targetsによるブートストラップ用エントリーポイント生成を有効化しています。RootNamespaceはRetroTestsです。
 
-対象アプリはC:\work\RetroUI\RetroUID7.exeです。既存の同名アプリを終了し、対話デスクトップで実行してください。
+対象アプリはC:\work\RetroUI\RetroUID13Modern.exeです。既存の同名アプリを終了し、対話デスクトップで実行してください。
 
     msbuild RetroUID7Ranorex.csproj /p:Configuration=Debug
     bin\Debug\RetroUID7Ranorex.exe
@@ -24,14 +24,9 @@ Ranorexレポートと同じ出力先のScreenshots/<実行日時_PID>/<テス�
 
 ## 検証範囲と残作業
 
-Ranorex12ビルドサーバーでRanorex固有のエントリーポイント生成を含むビルド成功を確認しました。Studioの画面でのロード、モジュール認識、選択実行、実際のUIテスト実行は未確認です。
+Modern 版のスナップショットと Delphi ソースに基づき、コントロールの name 属性、ステータスバーの3項目、UTF-8 ログと日本語メッセージに対応しています。既存ログは Logging と Options の各ケースでバイト単位で退避・復元します。ビルドおよび実際の UI テスト実行は、このブランチでは未確認です。
 
-D7ソースはCP932で解析済みです。ログ保存先はretroui_d7.log、表示は最大4行、タイマーは800msです。Loggingは既存ログをバイト単位で退避・復元します。
-スナップショットにはDelphi version not supportedの制限が記録されています。controlnameによるライブ検索やダイアログ文字列は実機検証が必要です。
-未実装の主な検証は全速度選択、自由入力、方式固有ログと4行循環、進捗範囲、自動再接続、途中設定変更、ログ外部ビューアと書込失敗、音声出力、ヘルプ本文、待機中終了確定、キーボード操作、復元クライアントサイズです。テストスイート化はこれらの網羅性を追加するものではありません。
-
-ビルド成果物のコピー先:
-\\laptop-an963npk\data\work\services\Ranorex\build\RetrroUID7
+スナップショットは Snapshots/D13Modern にあります。表示やセレクターは対話デスクトップでの実行確認が必要です。対象外の項目は TEST_SCENARIOS.md を参照してください。
 
 ## コンソールログ
 標準出力と標準エラーを、Ranorexが決定したReportViewFilePathと同じフォルダー・同じベース名の.txtへ保存します。例: Example.rxlogとExample.txt。UTF-8 BOM付き、追記ごとにフラッシュします。レポート初期化前の出力もバッファーして保存します。レポートが初期化されない場合は保存先を決定できず、その旨を標準エラーへ通知します。ネイティブプロセスや子プロセスの出力は対象外です。実行時の保存動作は未検証です。

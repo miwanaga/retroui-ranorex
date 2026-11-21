@@ -52,9 +52,11 @@ namespace RetroTests
         {
             lock (gate)
             {
-                if (file != null) return;
+                if (file != null)
+                    return;
                 var environment = TestReport.ReportEnvironment;
-                if (environment == null || string.IsNullOrEmpty(environment.ReportViewFilePath)) return;
+                if (environment == null || string.IsNullOrEmpty(environment.ReportViewFilePath))
+                    return;
                 string path = Path.ChangeExtension(environment.ReportViewFilePath, ".txt");
                 Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path)));
                 file = new StreamWriter(path, false, new UTF8Encoding(true));
@@ -72,8 +74,10 @@ namespace RetroTests
             Console.SetError(originalError);
             lock (gate)
             {
-                if (file != null) file.Dispose();
-                else originalError.WriteLine("Console log was not saved because Ranorex did not initialize a report.");
+                if (file != null)
+                    file.Dispose();
+                else
+                    originalError.WriteLine("Console log was not saved because Ranorex did not initialize a report.");
             }
         }
 
@@ -87,14 +91,21 @@ namespace RetroTests
                 this.destination = destination;
                 NewLine = "\r\n";
             }
-            public override Encoding Encoding { get { return Encoding.UTF8; } }
+            public override Encoding Encoding
+            {
+                get {
+                    return Encoding.UTF8;
+                }
+            }
             public override void Write(char value)
             {
                 lock (owner.gate)
                 {
                     destination.Write(value);
-                    if (owner.file == null) owner.pending.Append(value);
-                    else owner.file.Write(value);
+                    if (owner.file == null)
+                        owner.pending.Append(value);
+                    else
+                        owner.file.Write(value);
                 }
             }
             public override void Write(string value)
@@ -102,8 +113,10 @@ namespace RetroTests
                 lock (owner.gate)
                 {
                     destination.Write(value);
-                    if (owner.file == null) owner.pending.Append(value);
-                    else owner.file.Write(value);
+                    if (owner.file == null)
+                        owner.pending.Append(value);
+                    else
+                        owner.file.Write(value);
                 }
             }
             public override void Flush()
@@ -111,7 +124,8 @@ namespace RetroTests
                 lock (owner.gate)
                 {
                     destination.Flush();
-                    if (owner.file != null) owner.file.Flush();
+                    if (owner.file != null)
+                        owner.file.Flush();
                 }
             }
         }

@@ -5,19 +5,19 @@
         public static void Run()
         {
             UI.Click("rbModem");
-            UI.Text("edtPort","COM3");
-            UI.Enabled("cmbBaud",true);
-            UI.Enabled("chkParity",true);
+            UI.Text("edtPort", "COM3");
+            UI.Enabled("cmbBaud", true);
+            UI.Enabled("chkParity", true);
             UI.Click("rbLan");
-            UI.Text("edtPort","192.168.1.10:8080");
-            UI.Enabled("cmbBaud",false);
-            UI.Enabled("chkParity",false);
+            UI.Text("edtPort", "192.168.1.10:8080");
+            UI.Enabled("cmbBaud", false);
+            UI.Enabled("chkParity", false);
             UI.Click("rbSerial");
-            UI.Text("edtPort","COM1");
-            UI.Enabled("cmbBaud",true);
-            UI.Enabled("chkParity",true);
-            UI.Toggle("chkParity",true);
-            UI.Toggle("chkParity",false);
+            UI.Text("edtPort", "COM1");
+            UI.Enabled("cmbBaud", true);
+            UI.Enabled("chkParity", true);
+            UI.Toggle("chkParity", true);
+            UI.Toggle("chkParity", false);
         }
     }
 }

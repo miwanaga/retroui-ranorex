@@ -1,0 +1,12 @@
+﻿<Properties>
+  <Array name="active" />
+  <ActiveConfiguration value="Debug" />
+  <ActivePlatform value="x86" />
+  <Array name="bookmarks" />
+  <Array name="files" />
+  <SerializedValue name="ModuleBrowserState">
+    <ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+  </SerializedValue>
+  <ProjectBrowserState value="[Solution RetroUID7Ranorex[RetroUID7Ranorex[]]]&#xD;&#xA;Solution RetroUID7Ranorex\RetroUID7Ranorex\Program.cs&#xD;&#xA;Solution RetroUID7Ranorex" />
+  <StartupProject value="{4988D438-A667-4885-859D-62423C591E40}" />
+</Properties>

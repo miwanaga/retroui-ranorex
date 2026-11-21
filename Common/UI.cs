@@ -6,7 +6,7 @@ namespace RetroTests
 {
     public static class UI
     {
-        public const string Root = "/form[@processname='RetroUID13Win' and @class='TRetroUIForm']";
+        public const string Root = "/form[@processname='RetroUID13Win10' and @class='TRetroUIForm']";
         public static Unknown Find(string name)
         {
             return Host.Local.FindSingle<Unknown>(Root + "//*[@name='" + name + "']", 10000);
@@ -67,7 +67,7 @@ namespace RetroTests
         {
             Screenshots.Capture("Confirmation_" + (yes ? "Yes" : "No"));
             Host.Local
-                .FindSingle<Button>("/form[@processname='RetroUID13Win' and @class='TMessageForm']//button[@text~'" +
+                .FindSingle<Button>("/form[@processname='RetroUID13Win10' and @class='TMessageForm']//button[@text~'" +
                                         (yes ? "Yes|はい" : "No|いいえ") + "']",
                                     10000)
                 .Click();
@@ -98,7 +98,7 @@ namespace RetroTests
             try
             {
                 p = Process.Start(new ProcessStartInfo(
-                    @"C:\work\RetroUI\RetroUID13Win.exe") { WorkingDirectory = @"C:\work\RetroUI" });
+                    @"C:\work\RetroUI\RetroUID13Win10.exe") { WorkingDirectory = @"C:\work\RetroUI" });
                 Find("btnExec");
                 Screenshots.Capture("Initial");
                 test();

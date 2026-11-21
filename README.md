@@ -10,7 +10,7 @@ Ranorex Studio 12.8.2でRetroUID7Ranorex.csprojを開き、RetroUID7Ranorex.rxts
 
 Program.MainはTestSuiteRunner.Runを呼びます。Ranorex.MSBuild.Targetsによるブートストラップ用エントリーポイント生成を有効化しています。RootNamespaceはRetroTestsです。
 
-対象アプリはC:\work\RetroUI\RetroUID13Win.exeです。既存の同名アプリを終了し、対話デスクトップで実行してください。
+対象アプリはC:\work\RetroUI\RetroUID13Win10.exeです。既存の同名アプリを終了し、対話デスクトップで実行してください。
 
     msbuild RetroUID7Ranorex.csproj /p:Configuration=Debug
     bin\Debug\RetroUID7Ranorex.exe

@@ -1,4 +1,4 @@
-﻿using Ranorex.Core.Testing;
+using Ranorex.Core.Testing;
 
 namespace RetroTests.Modules
 {

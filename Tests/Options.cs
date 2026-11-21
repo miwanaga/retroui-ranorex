@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 
 namespace RetroTests
 {
@@ -6,21 +6,21 @@ namespace RetroTests
     {
         public static void Run()
         {
-            const string path = @"C:\work\RetroUI\retroui_modern.log";
+            const string path = @"C:\work\RetroUI\retroui_win10.log";
             bool existed = File.Exists(path);
             byte[] original = existed ? File.ReadAllBytes(path) : null;
             try
             {
-                UI.Toggle("chkLog", true);
+                UI.Toggle("swLog", true);
                 UI.Check(bool.Parse(UI.Attr("btnOpenLog", "visible")), "open log visible");
-                UI.Toggle("chkLog", false);
-                UI.Toggle("chkWarn", false);
-                UI.Toggle("chkWarn", true);
-                UI.Toggle("chkFull", true);
+                UI.Toggle("swLog", false);
+                UI.Toggle("swWarn", false);
+                UI.Toggle("swWarn", true);
+                UI.Toggle("swFull", true);
                 UI.Check(Ranorex.Host.Local.FindSingle<Ranorex.Form>(UI.Root, 10000)
                                  .Element.GetAttributeValueText("state") == "Maximized",
                          "maximized");
-                UI.Toggle("chkFull", false);
+                UI.Toggle("swFull", false);
                 UI.Check(Ranorex.Host.Local.FindSingle<Ranorex.Form>(UI.Root, 10000)
                                  .Element.GetAttributeValueText("state") == "Normal",
                          "normal");

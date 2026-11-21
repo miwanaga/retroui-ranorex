@@ -1,4 +1,4 @@
-﻿namespace RetroTests
+namespace RetroTests
 {
     static class Dialogs
     {
@@ -7,7 +7,7 @@
             UI.Click("btnHelp");
             Ranorex.Host.Local
                 .FindSingle<Ranorex.Button>(
-                    "/form[@processname='RetroUID13Modern' and @class='TMessageForm']//button[@text='OK']", 10000)
+                    "/form[@processname='RetroUID13Win' and @class='TMessageForm']//button[@text='OK']", 10000)
                 .Click();
             UI.Click("btnClose");
             UI.Confirm(false);

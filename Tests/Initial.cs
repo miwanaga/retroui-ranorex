@@ -1,4 +1,4 @@
-﻿using Ranorex;
+using Ranorex;
 namespace RetroTests
 {
     static class Initial
@@ -9,10 +9,10 @@ namespace RetroTests
             UI.Enabled("btnStop", false);
             UI.Text("edtPort", "COM1");
             UI.Text("cmbBaud", "38400");
-            foreach (var pair in new[] { new { Name = "chkAuto", Value = true }, new { Name = "chkLog", Value = false },
-                                         new { Name = "chkWarn", Value = true },
-                                         new { Name = "chkFull", Value = false },
-                                         new { Name = "chkParity", Value = false } })
+            foreach (var pair in new[] { new { Name = "swAuto", Value = true }, new { Name = "swLog", Value = false },
+                                         new { Name = "swWarn", Value = true },
+                                         new { Name = "swFull", Value = false },
+                                         new { Name = "swParity", Value = false } })
             {
                 var c = Host.Local.FindSingle<CheckBox>(UI.Root + "//*[@name='" + pair.Name + "']", 10000);
                 UI.Check(c.Checked == pair.Value, "initial " + pair.Name);

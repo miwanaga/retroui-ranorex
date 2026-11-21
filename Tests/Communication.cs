@@ -1,4 +1,4 @@
-﻿namespace RetroTests
+namespace RetroTests
 {
     static class Communication
     {
